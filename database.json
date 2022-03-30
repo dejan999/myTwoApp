@@ -1,0 +1,34 @@
+{
+  "reminders": [
+    {
+      "id": 1,
+      "reminder": "Ispt",
+      "reminderDetalis": "Polaganje ispita iz web-a\nIspit se polaze u velikom amfiteatru\nRade se zadaci iz JS-a\nProfesor Petar Petrovic",
+      "dateForReminder": "2022-03-24T13:15:00.000Z"
+    },
+    {
+      "id": 2,
+      "reminder": "Polaganje voznje B i C i A2 kategorije",
+      "reminderDetalis": "Poneti licnu kartu\nPoneti lekarsko uverenje\nI uplatnice o placenoj taksi polaganja",
+      "dateForReminder": "2022-04-11T19:30:00.000Z"
+    },
+    {
+      "id": 3,
+      "reminder": "Tehnicki pregled auta B5 Wv i Golf V",
+      "reminderDetalis": "Poneti polisu osiguranuja\nI kopiranu licnu kartu",
+      "dateForReminder": "2022-03-18T16:00:00.000Z"
+    },
+    {
+      "reminder": "Upis FTN IT",
+      "reminderDetalis": "Upis na apsolventsku godinu\nPoneti uplatnice i popunjen 'SRO' obrazac\nI poneti fotokopiju licne karte",
+      "dateForReminder": "2022-03-30T07:28:00.000Z",
+      "id": 4
+    },
+    {
+      "reminder": "Sastanak",
+      "reminderDetalis": "Dogovor za izradu novih flajera",
+      "dateForReminder": "2022-03-15T13:58:00.000Z",
+      "id": 5
+    }
+  ]
+}
