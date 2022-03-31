@@ -1,0 +1,16 @@
+<div class="widgets" ng-if="vm.showNewReminder">
+
+    <div class="row">
+      <div class="col-md-12">
+      <button type="button" class="btn btn-primary  btn-sm" ng-click="vm.back()">Back</button>
+      <br><br>
+        <div
+            ba-panel
+            ba-panel-title="New reminder"
+            ba-panel-class="with-scroll">
+          <div ng-include="'app/pages/form/inputs/widgets/standardFields.html'"></div>
+        </div>
+      </div>
+    </div>
+    
+  </div>

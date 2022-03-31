@@ -22,13 +22,15 @@
             icon: 'ion-grid',
             order: 300,
           },
-        }).state('tables.basic', {
-          url: '/basic/{id:string}',
-          templateUrl: 'app/pages/tables/basic/tables.html',
-          title: 'Basic Tables',
-          sidebarMeta: {
-            order: 0,
-          },
+        // }).state('tables.basic', {
+        //   url: '/basic/{id:string}',
+        //   templateUrl: 'app/pages/tables/basic/tables.html',
+        //   controller: 'TablesPageCtrl',
+        //   controllerAs:'vm',
+        //   title: 'Basic Tables',
+        //   sidebarMeta: {
+        //     order: 0,
+        //   },
         }).state('tables.smart', {
           url: '/smart',
           templateUrl: 'app/pages/tables/smart/tables.html',

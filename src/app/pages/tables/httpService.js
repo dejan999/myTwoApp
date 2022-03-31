@@ -23,11 +23,11 @@
                         return response;
                     })
             }
-            function more() {
+            function more(id) {
                 return $http({
                     method: 'GET',
                     url: 'http://localhost:3000/reminders',
-                    params: { id: $stateParams.id }
+                    params: { id: id }
                     
                 })
                 .then(function (response) {
@@ -37,10 +37,10 @@
                     
                 })
             }
-            function deleteReminder(f) {
+            function deleteReminder(id) {
                 return $http({
                     method:'delete',
-                    url:'http://localhost:3000/reminders/' + f
+                    url:'http://localhost:3000/reminders/' + id
                 })
                 .then(function(response){
                     return response;

@@ -6,127 +6,133 @@
   'use strict';
 
   angular.module('BlurAdmin.pages.tables')
-      .controller('TablesPageCtrl', TablesPageCtrl);
+    .controller('TablesPageCtrl', TablesPageCtrl);
 
   /** @ngInject */
-  function TablesPageCtrl($scope, $filter,$state, editableOptions, editableThemes, tableService) {
+  function TablesPageCtrl($scope, $filter, $state, editableOptions, editableThemes, tableService) {
 
-    var vm=this;
+    var vm = this;
 
     print();
-    vm.moreInfo=moreInfo;
+    vm.moreInfo = moreInfo;
+    vm.back = back;
+    vm.removeReminder = removeReminder;
+    vm.addReminder = addReminder;
+    vm.addNewReminder = addNewReminder;
+    vm.editReminder=editReminder;
+
+
 
     function print() {
       tableService.viewMethod()
-      .then(function (response) {
-        vm.reminders = response.data;
-        console.log(vm.reminders);
-        vm.showaTable = true;
-        
-    })
-    .catch(function (error) {
-        alert('Error');
-    })
+        .then(function (response) {
+          vm.reminders = response.data;
+          console.log(vm.reminders);
+          vm.back();
+        })
+        .catch(function (error) {
+          alert('Error');
+        })
     }
 
     function moreInfo(reminder) {
-        $state.go("tables.basic", { id: reminder.id })
+      var id = reminder.id;
+      console.log(id);
+      tableService.more(id)
+        .then(function (response) {
+          vm.reminder = response.data;
+          console.log(vm.reminder);
+          vm.showaTable = false;
+          vm.showPanel = true;
+        })
+        .catch(function (error) {
+          alert('Error');
+        })
+
     }
 
-    $scope.users = [
-      {
-        "id": 1,
-        "name": "Esther Vang",
-        "status": 4,
-        "group": 3
-      },
-      {
-        "id": 2,
-        "name": "Leah Freeman",
-        "status": 3,
-        "group": 1
-      },
-      {
-        "id": 3,
-        "name": "Mathews Simpson",
-        "status": 3,
-        "group": 2
-      },
-      {
-        "id": 4,
-        "name": "Buckley Hopkins",
-        "group": 4
-      },
-      {
-        "id": 5,
-        "name": "Buckley Schwartz",
-        "status": 1,
-        "group": 1
-      },
-      {
-        "id": 6,
-        "name": "Mathews Hopkins",
-        "status": 4,
-        "group": 2
-      },
-      {
-        "id": 7,
-        "name": "Leah Vang",
-        "status": 4,
-        "group": 1
-      },
-      {
-        "id": 8,
-        "name": "Vang Schwartz",
-        "status": 4,
-        "group": 2
-      },
-      {
-        "id": 9,
-        "name": "Hopkin Esther",
-        "status": 1,
-        "group": 2
-      },
-      {
-        "id": 10,
-        "name": "Mathews Schwartz",
-        "status": 1,
-        "group": 3
+    function back() {
+      vm.showaTable = true;
+      vm.showPanel = false;
+      vm.showNewReminder = false;
+      vm.showEditReminder=false;
+    }
+
+    function removeReminder(id) {
+      console.log(id);
+      var userval = confirm("Do you like to delite this reminder?!")
+
+      if (userval == true) {
+        tableService.delete(id)
+          .then(function (response) {
+
+            if (response.data)
+
+              print()
+            vm.msg = "Reminder is deleted!";
+            alert(vm.msg);
+
+          })
+          .catch(function (response) {
+
+            vm.msg = "Something is wrong";
+            alert(vm.msg);
+            vm.statusval = response.status;
+            vm.statustext = response.statusText;
+            vm.headers = response.headers();
+          })
+
       }
-    ];
+    }
 
-    $scope.statuses = [
-      {value: 1, text: 'Good'},
-      {value: 2, text: 'Awesome'},
-      {value: 3, text: 'Excellent'},
-    ];
+    function addReminder() {
+      vm.showaTable = false;
+      vm.showPanel = false;
+      vm.showNewReminder = true;
 
-    $scope.groups = [
-      {id: 1, text: 'user'},
-      {id: 2, text: 'customer'},
-      {id: 3, text: 'vip'},
-      {id: 4, text: 'admin'}
-    ];
+      
 
+      
+    }
+    function addNewReminder(title, detalis, date) {
+      var data = {
+        reminder: title,
+        reminderDetalis: detalis,
+        dateForReminder: date
+      }
+      if (data.reminder == null || data.reminderDetalis == null || data.dateForReminder == null) {
+        alert("Please, fill in all fields!")
+      }
+      else {
+        tableService.add(data)
+          .then(function (response) {
 
-    $scope.removeUser = function(index) {
-      $scope.users.splice(index, 1);
-    };
+            if (response.data)
+              vm.msg = "Post Data Submitted Successfully!";
+            alert(vm.msg);
+            
+            print();
+          }).catch(function (error) {
+            alert('Error');
+          })
 
+        vm.title = '';
+        vm.detalis = '';
+        vm.date = '';
+      }
+    }
 
-    $scope.addUser = function() {
-      $scope.inserted = {
-        id: $scope.users.length+1,
-        name: '',
-        status: null,
-        group: null
-      };
-      $scope.users.push($scope.inserted);
-    };
+    function editReminder(reminder) {
+      console.log(reminder);
+      vm.showaTable = false;
+      vm.showPanel = false;
+      vm.showNewReminder = false;
+      vm.showEditReminder = true;
 
-    editableOptions.theme = 'bs3';
-    editableThemes['bs3'].submitTpl = '<button type="submit" class="btn btn-primary btn-with-icon"><i class="ion-checkmark-round"></i></button>';
-    editableThemes['bs3'].cancelTpl = '<button type="button" ng-click="$form.$cancel()" class="btn btn-default btn-with-icon"><i class="ion-close-round"></i></button>';
+    }
+    // editableOptions.theme = 'bs3';
+    // editableThemes['bs3'].submitTpl = '<button type="submit" class="btn btn-primary btn-with-icon"><i class="ion-checkmark-round"></i></button>';
+    // editableThemes['bs3'].cancelTpl = '<button type="button" ng-click="$form.$cancel()" class="btn btn-default btn-with-icon"><i class="ion-close-round"></i></button>';
 
 
   }
