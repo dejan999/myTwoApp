@@ -1,41 +1,52 @@
 <div ng-if="vm.showaTable">
-<div class="add-row-editable-table">
-  <button class="btn btn-primary" ng-click="vm.addReminder()">Add reminder</button>
-</div>
-<table class="table table-bordered table-hover table-condensed" >
-  <tr>
-    <td></td>
-    <td>Title of reminders</td>
-    <!-- <td>Status</td>
+  <div class="add-row-editable-table">
+    <button class="btn btn-primary" ng-click="vm.addReminder()">Add reminder</button>
+  </div>
+  <table class="table table-bordered table-hover table-condensed">
+    <tr>
+      <td></td>
+      <td>Title of reminders</td>
+      <!-- <td>Status</td>
     <td>Group</td> -->
-    <td>Actions</td>
-  </tr>
-  <tr ng-repeat="reminder in vm.reminders" class="editable-row">
-    <td>
-        {{$index}}
-    </td>
-    <td>
-        <span editable-text="reminder.reminder" e-name="reminder" e-form="rowform" e-required>
-          {{ reminder.reminder || 'empty' }}
-        </span>
-    </td>
-    
-    <td>
+      <td>Actions</td>
+    </tr>
+    <tr ng-repeat="reminder in vm.reminders" class="editable-row">
       
-      </form>
-      <div class="buttons" ng-show="!rowform.$visible">
-        <button class="btn btn-primary editable-table-button btn-xs" ng-click="vm.editReminder(reminder)">Edit</button>
-        <button class="btn btn-danger editable-table-button btn-xs" ng-click="vm.removeReminder(reminder.id)">Delete</button>
-        <button class="btn btn-info editable-table-button btn-xs" ng-click="vm.moreInfo(reminder)">More info</button>
-      </div>
-    </td>
-  </tr>
-  
-</table>
+        
+          <td>
+            {{reminder.id}}
+          </td>
+          <td>
+            <span editable-text="reminder.reminder" e-name="reminder" e-form="rowform" e-required>
+              {{ reminder.reminder || 'empty' }}
+            </span>
+          </td>
+        
+        <div class="col-md-6">
+          <td>
+            <div class="buttons" ng-show="!rowform.$visible">
+              <button class="btn btn-primary editable-table-button btn-xs"
+                ng-click="vm.editReminder(reminder)">Edit</button>
+              <button class="btn btn-danger editable-table-button btn-xs"
+                ng-click="vm.removeReminder(reminder.id)">Delete</button>
+              <button class="btn btn-info editable-table-button btn-xs" ng-click="vm.moreInfo(reminder)">More
+                info</button>
+            </div>
+          </td>
+        
+      
+
+    </tr>
+  </table>
+  <div class="row"><br><br>
+    <div class="col-md-6">
+      <button class="btn btn-primary" ng-click="vm.previous()">Previous</button>
+    </div>
+    <div class="col-md-6">
+      <button class="btn btn-primary" ng-click="vm.next()" style="float: right;">Next</button>
+    </div>
+  </div>
 </div>
 <div include-with-scope="app/pages/tables/widgets/moreDetalis.html"></div>
 <div include-with-scope="app/pages/tables/widgets/insertNewReminder.html"></div>
 <div include-with-scope="app/pages/tables/widgets/editReminders.html"></div>
-
-
-

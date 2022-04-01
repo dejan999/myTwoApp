@@ -12,27 +12,51 @@
   function TablesPageCtrl($scope, $filter, $state, editableOptions, editableThemes, tableService) {
 
     var vm = this;
+    var pageNext = 1;
+    var maxLimit;
+    var newLimit;
 
     print();
+    vm.next = next;
+    vm.previous = previous;
     vm.moreInfo = moreInfo;
     vm.back = back;
     vm.removeReminder = removeReminder;
     vm.addReminder = addReminder;
     vm.addNewReminder = addNewReminder;
-    vm.editReminder=editReminder;
-
+    vm.editReminder = editReminder;
+    vm.addEditReminder=addEditReminder;
 
 
     function print() {
-      tableService.viewMethod()
+      tableService.view(pageNext)
         .then(function (response) {
           vm.reminders = response.data;
+          maxLimit = response.headers('X-Total-Count');
+          newLimit = Math.ceil(maxLimit / 14);
+          vm.showaTable=true;
+          console.log(newLimit);
           console.log(vm.reminders);
-          vm.back();
         })
         .catch(function (error) {
           alert('Error');
         })
+
+
+    }
+
+    function next() {
+      if (pageNext < newLimit) {
+        pageNext++;
+      }
+      print();
+    }
+
+    function previous() {
+      if (pageNext > 1) {
+        pageNext--;
+      }
+      print();
     }
 
     function moreInfo(reminder) {
@@ -52,10 +76,10 @@
     }
 
     function back() {
-      vm.showaTable = true;
+      print();
       vm.showPanel = false;
       vm.showNewReminder = false;
-      vm.showEditReminder=false;
+      vm.showEditReminder = false;
     }
 
     function removeReminder(id) {
@@ -90,9 +114,9 @@
       vm.showPanel = false;
       vm.showNewReminder = true;
 
-      
 
-      
+
+
     }
     function addNewReminder(title, detalis, date) {
       var data = {
@@ -110,7 +134,7 @@
             if (response.data)
               vm.msg = "Post Data Submitted Successfully!";
             alert(vm.msg);
-            
+
             print();
           }).catch(function (error) {
             alert('Error');
@@ -120,21 +144,42 @@
         vm.detalis = '';
         vm.date = '';
       }
+      back();
     }
 
     function editReminder(reminder) {
-      console.log(reminder);
+
+      tableService.more(reminder.id)
+        .then(function (response) {
+          response.data[0].dateForReminder = new Date(response.data[0].dateForReminder);
+          vm.reminders = response.data;
+          console.log(vm.reminders);
+        })
+
       vm.showaTable = false;
       vm.showPanel = false;
       vm.showNewReminder = false;
       vm.showEditReminder = true;
 
     }
-    // editableOptions.theme = 'bs3';
-    // editableThemes['bs3'].submitTpl = '<button type="submit" class="btn btn-primary btn-with-icon"><i class="ion-checkmark-round"></i></button>';
-    // editableThemes['bs3'].cancelTpl = '<button type="button" ng-click="$form.$cancel()" class="btn btn-default btn-with-icon"><i class="ion-close-round"></i></button>';
-
-
+    function addEditReminder(reminder) {
+      tableService.puting(reminder)
+                .then(function (response) {
+                    if (response.data)
+                        tableService.viewMethod()
+                            .then(function (response) {
+                                response.data[0].dateForReminder = new Date(response.data[0].dateForReminder);
+                                vm.reminders = response.data;
+                            })
+                    vm.msg = "Reminder is updated!";
+                    alert(vm.msg);
+                    back();
+                })
+                .catch(function (error) {
+                    alert('Error');
+                })
+    }
+    
   }
 
 })();

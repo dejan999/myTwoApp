@@ -40,7 +40,7 @@
           }
        
         });
-    $urlRouterProvider.when('/tables','/tables/basic');
+    $urlRouterProvider.when('/tables','/tables/smart');
   }
 
 })();
