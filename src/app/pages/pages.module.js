@@ -13,6 +13,7 @@
     // 'BlurAdmin.pages.components',
     // 'BlurAdmin.pages.form',
     'BlurAdmin.pages.reminders',
+    'BlurAdmin.pages.status'
     //'BlurAdmin.pages.tables',
     // 'BlurAdmin.pages.charts',
     // 'BlurAdmin.pages.maps',

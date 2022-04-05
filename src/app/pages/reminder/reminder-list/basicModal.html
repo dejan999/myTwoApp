@@ -1,0 +1,28 @@
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" ng-click="$dismiss()" aria-label="Close">
+      <em class="ion-ios-close-empty sn-link-close"></em>
+    </button>
+    <h4 class="modal-title" id="myModalLabel">{{vm.data.reminder}}</h4>
+  </div>
+  <div class="modal-body">
+    {{vm.data.reminderDetalis}}
+  </div>
+  <div class="modal-footer">
+    <div class="row">
+      <div class="col-md-3" >
+          <h5 class="modal-title" id="myModalLabel" style="text-align: left;">
+            <i class="bi bi-smartwatch"></i>
+            {{vm.data.dateForReminder.substr(11,5)}}
+          </h5>
+          <h5 class="modal-title" id="myModalLabel" style="text-align: left;">
+            <i class="bi bi-calendar-event-fill"></i>
+            {{vm.data.dateForReminder.substr(0,10)}}
+          </h5>
+      </div>
+      <div class="col-md-9">
+        <button type="button" class="btn btn-primary" ng-click="$dismiss()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

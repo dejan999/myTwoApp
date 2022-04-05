@@ -1,23 +1,28 @@
 
- (function () {
-    'use strict';
-  
-    angular.module('BlurAdmin.pages.ui.reminder-list')
-      .controller('listController', listController);
-  
-    /** @ngInject */
-    function listController($scope, $filter, $state, editableOptions, editableThemes, tableService) {
-            
+(function () {
+  'use strict';
+
+  angular.module('BlurAdmin.pages.ui.reminder-list')
+    .controller('listController', listController);
+
+  /** @ngInject */
+  function listController($scope,$state,$uibModal,baProgressModal,tableService) {
+
     var vm = this;
     var pageNext = 1;
     var maxLimit;
     var newLimit;
+    
 
     print();
     vm.next = next;
     vm.previous = previous;
-    vm.addReminder=addReminder;
-    vm.removeReminder=removeReminder;
+    vm.addReminder = addReminder;
+    vm.removeReminder = removeReminder;
+    vm.editReminder = editReminder;
+    vm.moreInfo = moreInfo;
+    vm.open = open;
+    
 
     function print() {
       tableService.view(pageNext)
@@ -79,6 +84,27 @@
 
       }
     }
+
+    function editReminder(reminder) {
+      $state.go('ui.update-reminder', { id: reminder.id })
     }
-  })();
-  
+
+    function moreInfo(reminder) {
+        vm.data=reminder;
+        console.log(vm.data);
+        
+        $uibModal.open({
+          animation: true,
+          templateUrl: 'app/pages/reminder/reminder-list/basicModal.html',
+          size: 'md',
+          scope:$scope
+        });
+      
+      $scope.openProgressDialog = baProgressModal.open;
+      // $state.go('ui.detalis',{id:reminder.id})
+    }
+
+    
+  }
+
+})();

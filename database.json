@@ -15,7 +15,7 @@
     {
       "id": 3,
       "reminder": "Tehnicki pregled auta B5 Wv i Golf V",
-      "reminderDetalis": "Poneti polisu osiguranuja\nI kopiranu licnu kartu",
+      "reminderDetalis": "Poneti polisu osiguranuja\nI kopiranu licnu kartu\n32000rsd uplatnicu",
       "dateForReminder": "2022-03-18T16:00:00.000Z"
     },
     {
@@ -25,13 +25,13 @@
       "id": 4
     },
     {
-      "reminder": "ffghfh",
+      "reminder": "123321",
       "reminderDetalis": "fhfghfghf",
       "dateForReminder": "2022-03-11T12:55:00.000Z",
       "id": 6
     },
     {
-      "reminder": "liuliul",
+      "reminder": "asdf",
       "reminderDetalis": "luluilul",
       "dateForReminder": "2022-03-17T13:00:00.000Z",
       "id": 7
@@ -43,7 +43,7 @@
       "id": 8
     },
     {
-      "reminder": "ghjg",
+      "reminder": "ghjg432",
       "reminderDetalis": "jghjghjghj",
       "dateForReminder": "2022-03-11T13:03:00.000Z",
       "id": 10
@@ -53,24 +53,6 @@
       "reminderDetalis": "hfghfghfgh",
       "dateForReminder": "2022-03-08T13:04:00.000Z",
       "id": 11
-    },
-    {
-      "reminder": "sffsdfsdf",
-      "reminderDetalis": "fsdfsdf",
-      "dateForReminder": "2022-03-09T13:27:00.000Z",
-      "id": 12
-    },
-    {
-      "reminder": "hfhhfhg789",
-      "reminderDetalis": "fghfhgfhff",
-      "dateForReminder": "2022-03-14T13:32:00.000Z",
-      "id": 13
-    },
-    {
-      "reminder": "hfghfghfghfhh",
-      "reminderDetalis": "fhfghgfhgfhfghfghf",
-      "dateForReminder": "2022-04-15T06:17:00.000Z",
-      "id": 14
     },
     {
       "reminder": "dfsfsdfs",
@@ -85,10 +67,22 @@
       "id": 16
     },
     {
-      "reminder": "dfg123",
-      "reminderDetalis": "gdfg",
-      "dateForReminder": "2022-04-07T13:30:00.000Z",
-      "id": 17
+      "reminder": "ghj123",
+      "reminderDetalis": "drtdtdg",
+      "dateForReminder": "2022-04-15T06:28:00.000Z",
+      "id": 18
+    },
+    {
+      "reminder": "dggg",
+      "reminderDetalis": "dgdfgdfg",
+      "dateForReminder": "2022-04-23T10:30:00.000Z",
+      "id": 19
+    },
+    {
+      "reminder": "fdgdf",
+      "reminderDetalis": "ontrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of \"de Finibus Bonorum et Malorum\" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, \"Lorem ipsum dolor sit amet..\", comes from a line in section 1.10.32.\n\nThe standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from \"de Finibus Bonorum et Malorum\" by Cicero are also reproduced in their exact original form, accomp",
+      "dateForReminder": "2022-04-22T10:31:00.000Z",
+      "id": 20
     }
   ]
 }
