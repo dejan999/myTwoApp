@@ -9,11 +9,13 @@
     'ui.router',
 
     //'BlurAdmin.pages.dashboard',
-   // 'BlurAdmin.pages.ui',
+      //'BlurAdmin.pages.ui',
     // 'BlurAdmin.pages.components',
     // 'BlurAdmin.pages.form',
+    'BlurAdmin.pages.calendar',
     'BlurAdmin.pages.reminders',
-    'BlurAdmin.pages.status'
+    'BlurAdmin.pages.status',
+    'BlurAdmin.pages.test'
     //'BlurAdmin.pages.tables',
     // 'BlurAdmin.pages.charts',
     // 'BlurAdmin.pages.maps',

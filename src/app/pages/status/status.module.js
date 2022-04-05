@@ -6,7 +6,6 @@
     'use strict';
   
     angular.module('BlurAdmin.pages.status', [
-      'BlurAdmin.pages.status.statusBars'
     ])
         .config(routeConfig);
   
@@ -15,9 +14,10 @@
       $stateProvider
           .state('rm', {
             url: '/rm',
-            template : '<ui-view  autoscroll="true" autoscroll-body-top></ui-view>',
-            abstract: true,
-            title: 'Status of reminders',
+            templateUrl: 'app/pages/status/progressBar/progressBars.html',
+            title: 'Progress Bars',
+            controller:'progressController',
+            controllerAs:'vm',
             sidebarMeta: {
               icon: 'ion-android-laptop',
               order: 200,

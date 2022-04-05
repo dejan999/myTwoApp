@@ -2,7 +2,7 @@
 (function () {
     'use strict';
   
-    angular.module('BlurAdmin.pages.status.statusBars')
+    angular.module('BlurAdmin.pages.status')
       .controller('progressController', progressController);
   
     /** @ngInject */
