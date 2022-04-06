@@ -11,7 +11,7 @@
     /** @ngInject */
     function dashboardCalendar() {
       return {
-        restrict: 'AE',
+        restrict: 'E',
         controller: 'DashboardCalendarCtrl',
         templateUrl: 'app/pages/calendar/dashboardCalendar/dashboardCalendar.html'
       };

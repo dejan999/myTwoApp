@@ -15,7 +15,8 @@
     'BlurAdmin.pages.calendar',
     'BlurAdmin.pages.reminders',
     'BlurAdmin.pages.status',
-    'BlurAdmin.pages.test'
+    'BlurAdmin.pages.test',
+    'BlurAdmin.pages.user'
     //'BlurAdmin.pages.tables',
     // 'BlurAdmin.pages.charts',
     // 'BlurAdmin.pages.maps',

@@ -20,7 +20,6 @@
     $scope.uploadPicture = function () {
       var fileInput = document.getElementById('uploadFile');
       fileInput.click();
-
     };
 
     $scope.socialProfiles = [
